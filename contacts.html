@@ -16,6 +16,9 @@
       <div class="well">
           <h1>
               Contacts
+              <small>
+                  {{ loginButtons }}
+              </small>
           </h1>
       </div>
   </div>
@@ -38,8 +41,14 @@
 
 <template name="contact_item">
     <li>
-        {{ name }}
-
+        {{#if isEditing }}
+            <form>
+                <input type="text" class="fullname" value="{{name}}">
+                <button class="btn btn-inverse cancel">Cancel</button>
+            </form>
+        {{ else }}
+            {{ name }}
+        {{/if }}
         <button class="btn btn-danger delete">Delete</button>
     </li>
 </template>

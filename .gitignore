@@ -7,7 +7,7 @@ node_modules/
 .idea/
 .svn/
 .metadata/
-
+bundle/
 target/
 out/
 

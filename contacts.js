@@ -37,8 +37,29 @@ if (Meteor.isClient) {
     Template.contact_item.events({
         "click .delete": function(e, t) {
             Contacts.remove(this._id)
+        },
+
+        "click .edit": function(e, t) {
+            Session.set("currentlyEditing", this._id)
+        },
+
+        "click .cancel": function(e, t) {
+            Session.set("currentlyEditing", false)
+        },
+
+        "submit form": function(e, t) {
+            e.preventDefault()
+            var fullname = t.find(".fullname").value
+            Contacts.update({_id: this._id}, {
+                name: fullname
+            })
+            Session.set("currentlyEditing", false)
         }
     })
+
+    Template.contact_item.isEditing = function() {
+        return Session.get("currentlyEditing", this._id)
+    }
 }
 
 if (Meteor.isServer) {
