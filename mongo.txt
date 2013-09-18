@@ -1,0 +1,6 @@
+>db.users.insert({ name: "bharath" })
+
+>db.users.find()
+****
+
+> db.users.find({ name: "bharani" })

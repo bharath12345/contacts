@@ -1,0 +1,45 @@
+<head>
+  <title>My Meteor Contacts App</title>
+</head>
+
+<body>
+  <div class="container-fluid">
+      {{> header }}
+
+      {{> add_contact }}
+      {{> contact_list }}
+  </div>
+</body>
+
+<template name="header">
+  <div class="row-fluid">
+      <div class="well">
+          <h1>
+              Contacts
+          </h1>
+      </div>
+  </div>
+</template>
+
+<template name="contact_list">
+    <ul>
+        {{#each contacts}}
+            {{> contact_item }}
+        {{/each}}
+    </ul>
+</template>
+
+<template name="add_contact">
+    <form>
+        <input type="text" class="fullname">
+        <input type="submit" class="btn btn-primary">
+    </form>
+</template>
+
+<template name="contact_item">
+    <li>
+        {{ name }}
+
+        <button class="btn btn-danger delete">Delete</button>
+    </li>
+</template>
